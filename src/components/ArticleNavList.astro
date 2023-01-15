@@ -1,0 +1,35 @@
+---
+// based off https://github.com/theisel/astro-toc/blob/0a7ebba91b4cef89922500ef8555cf5b37424da3/packages/astro-toc/lib/TOC.astro (ISC)
+
+import type { MarkdownHeading } from "@astrojs/markdown-remark";
+
+export interface Props {
+  depth: number;
+  headings: MarkdownHeading[];
+}
+
+const { depth, headings } = Astro.props;
+
+// headings for this <ul>'s depth
+const myHeadings = headings.filter((heading) => heading.depth === depth);
+---
+
+<ul>
+  {
+    myHeadings.map((heading, i) => {
+      const subheadings = headings.slice(
+        headings.indexOf(heading) + 1,
+        headings.indexOf(myHeadings[i + 1])
+      );
+
+      return (
+        <li>
+          <a href={"#" + heading.slug}>{heading.text}</a>
+          {subheadings.length > 0 ? (
+            <Astro.self depth={heading.depth + 1} headings={subheadings} />
+          ) : null}
+        </li>
+      );
+    })
+  }
+</ul>

@@ -1,0 +1,17 @@
+---
+import ArticleNavList from "./ArticleNavList.astro";
+
+export interface Props {
+  headings: MarkdownHeadings[];
+}
+
+const { headings } = Astro.props;
+---
+
+{
+  headings.length > 0 && (
+    <nav>
+      <ArticleNavList depth={2} headings={headings} />
+    </nav>
+  )
+}

@@ -1,0 +1,18 @@
+---
+import { TITLE, NAV } from "@/config.ts";
+---
+
+<header>
+  <h1>{TITLE}</h1>
+  <nav>
+    {
+      Object.entries(NAV)
+        .map(([href, text]) => <a href={href}>{text}</a>)
+        .reduce((acc, x) => (
+          <>
+            {acc}&nbsp;{x}
+          </>
+        ))
+    }
+  </nav>
+</header>

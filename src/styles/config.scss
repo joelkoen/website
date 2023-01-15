@@ -1,0 +1,25 @@
+/* based off stone shades from https://tailwindcss.com/docs/customizing-colors */
+
+:root {
+  --bg: #ffffff;
+  --bg-accent: #e7e5e4;
+  --bg-alt: #fafaf9;
+  --bg-border: #e7e5e4;
+  --fg: #110f0e;
+  --fg-alt: #000000;
+  --fg-hover: #1d4ed8;
+  --font-mono: mono;
+  --font-sans: sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --bg-accent: #1e2d66;
+    --bg-alt: #110f0e;
+    --bg-border: #292524;
+    --fg: #e7e5e4;
+    --fg-alt: #fafaf9;
+    --fg-hover: #60a5fa;
+  }
+}

@@ -1,0 +1,26 @@
+---
+import ArticleNav from "@/components/ArticleNav.astro";
+import Base from "./Base.astro";
+import FormatDate from "@/components/FormatDate.astro";
+
+export interface Props {
+  content: {
+    title: string;
+    description: string;
+    pubDate: string;
+  };
+}
+
+const { content, headings } = Astro.props;
+---
+
+<Base content={content}>
+  <article>
+    <FormatDate date={content.pubDate} />
+    <h1>{content.title}</h1>
+
+    <ArticleNav headings={headings} />
+
+    <slot />
+  </article>
+</Base>

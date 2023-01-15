@@ -1,0 +1,12 @@
+@import "config";
+@import "new";
+
+@media not (prefers-color-scheme: dark) {
+  a {
+    font-weight: 500;
+  }
+}
+
+::selection {
+  background: var(--bg-accent);
+}
